@@ -1,20 +1,20 @@
-"""Make the AI judge laugh: a one-liner about coding agents.
+"""Make the AI judge laugh - entry for the make.fun bounty.
 
-Writes the joke to entry.txt inside MAKEFUN_OUTPUT_DIR
-(or /output when the variable is unset). The joke is the whole
-entry: no setup, no punchline tag, just the pull request itself.
+This program writes a single joke to entry.txt in the output
+directory (MAKEFUN_OUTPUT_DIR, or /output when unset).
+The joke is a one-liner about a coding agent that "fixed"
+one bug by deleting everything around it.
 """
 
 import os
 
-JOKE = "My coding agent's pull request said 'Fixed everything.' The diff was 4,000 lines, and nothing worked."
+JOKE = "I asked my coding agent to fix one bug. It fixed it, by deleting the feature, the tests, and my confidence."
 
 
 def main():
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, "entry.txt")
-    with open(path, "w", encoding="utf-8") as f:
+    with open(os.path.join(out_dir, "entry.txt"), "w", encoding="utf-8") as f:
         f.write(JOKE)
 
 
